@@ -1,0 +1,42 @@
+Ryan Grow lives in Carbondale, CO and works remotely for Blue Moon Digital, Inc. as a Senior Software Architect. At the Denver based Blue Moon Digital, he leads
+the software development for the Digital Marketing and Business Analytics agency.
+
+Ryan has been in the software development industry for over 30 years. His career started developing a graphical user interface in DOS for 
+Personal CAD Systems in 1989. He graduated from the University of Rochester in 1990 and went from there to Colorado
+where he helped develop the user interface and real time logic for the Titan IV B launch system.
+The Titan IV project was notable at the time as it granted an exemption from the requirement of using the Ada programming language, and instead was developed
+in C and ran on the IBM RS6000 Linux systems.
+
+He moved from defense to the world of startups. In 1997 he developed email campaign management software for Exactis.com which was one of the first major
+companies to mass publish custom email messaging for corporate clients. This system used Perl on the server for the web interface and for much of the email 
+generation logic.
+
+Throughout his career, he has programmed in most of the languages used commonly today. He has missed the type safety in many of the contemporary languages, especially in 
+Javascript, which is used for fairly complex front end web development frameworks. The type safety functionality offered by TypeScript can help developers
+understand and scale large front end applications as well as help the IDE identify problems with the code before it is run that otherwise would be missed without types.
+
+
+
+Typescript Outline:
+
+Where did Typescript come from?
+
+Where does Typescript fit in today's architectures?
+
+What are advantages of type definitions?
+
+How to declare a variable in Typescript and what are the basic types?
+
+Functions and Parameter Types 
+
+Classes
+
+Interfaces
+
+Generics
+
+Conditional types
+
+Type Soundness
+
+Future Direction

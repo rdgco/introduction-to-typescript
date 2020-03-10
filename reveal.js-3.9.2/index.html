@@ -1,0 +1,647 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/beige.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>Variables</section>
+			<section>
+				<h2>Defining Variables</h2>
+				The let keyword, is used to define a variable in typescript. The value assigned to the variable
+				can be changed later in code execution. References to the variable in the code indicate that
+				it is actually a placeholder of sorts to be replaced with the value at runtime.
+				<pre>
+					<code data-trim>
+						let x = 10;
+						console.log(x);
+						x = 20;
+						console.log(x);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h2>Constant Variables</h2>
+				<p>
+					Declaring a variable with const, will force the compiler to prevent changing that variable
+					after it is assigned a value the first time.
+				</p>
+				<pre>
+					<code data-trim>
+						const x = 10;
+						console.log(x);
+						# this next line will fail to compile.
+						# constant variables can not be modified.
+						x = 20;
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3>Types</h3>
+				<p>
+					Each variable in typescript has an associated type.
+					<ul>
+						<li>Number</li>
+						<li>String</li>
+						<li>Boolean</li>
+						<li>Enum</li>
+						<li>Void</li>
+						<li>Null</li>
+						<li>Any</li>
+						<li>Undefined</li>
+					</ul>
+				</p>
+			</section>
+
+			<section>
+				<h3>Type: Number</h3>
+				<p>
+					Types can be explicitly defined for variables. This example specifies that x is of type Number
+					explicitly.
+				</p>
+				<pre>
+					<code data-trim>
+						let x:Number = 10;
+						x = 20;
+						let y = x;
+						console.log(y);
+					</code>
+				</pre>
+			</section>
+
+
+			<section>
+				<h3>Implicit Types</h3>
+				<p>
+					If a type for a variable is not explicitly defined, typescript will look for
+					an implicit type definition when the variable is first assigned to a value with a known
+					type.
+				</p>
+			</section>
+
+			<section>
+				<h3> Example Implicit Type</h3>
+				<p>
+					At compile time, typescript will determine that y should be of type Number since it is
+					initialized with a number value. In this case, the number value is the value of x.
+					Likewise, the variable: y will have an implicit type set to the same as x.
+				</p>
+				<pre>
+					<code data-trim>
+						let x:Number = 10;
+						x = 20;
+						let y = x;
+						console.log(y);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3>Floating Point Numbers</h3>
+				Numbers are represented by floating point data in Typescript. So both whole numbers and
+				numbers with floating point values are represented by the Number datatype.
+				<pre>
+					<code data-trim>
+						let x:Number = 20.5;
+						let y:Number = 3;
+						console.log(x);
+						console.log(x * 3);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3>Strings</h3>
+				String type variables represent one or more characters in a terminated sequence.
+				<pre>
+					<code data-trim>
+						let town:String = "Carbondale";
+						console.log(x);
+
+						let letter:String = "C"
+						console.log(letter);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3>String Interpolation</h3>
+				<p>
+					The backtick identifier is used to wrap strings that contain both constant data and
+					variables.
+					A value inside a backtick enclosed string can be also wrapped in ${} to indicate that
+					this is a variable, and the string should include the value of the variable in place of that.
+				</p>
+				<pre>
+					<code data-trim>
+						let town:String = "Carbondale";
+						console.log(x);
+						let state:String = "Colorado";
+						console.log(`${town}, ${state}`);
+						let z = `${town}, ${state}`;
+						console.log(z);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3>String Methods</h3>
+				All of the javascript string methods are available with typescript strings.
+				<pre>
+					<code data-trim>
+						const firstName = "Ryan";
+						const lastName = "Grow";
+						const fullName = firstName.concat(lastName);
+						console.log(fullName);
+
+						let length: Number = fullName.length
+						console.log(length);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				Boolean
+				A boolean typed variable can represent one of two values at a time. Either 'true' or 'false'.
+				<pre>
+					<code data-trim>
+						const on = true;
+						const off = false;
+						const lightState = on;
+						if (lightState) {
+							console.log("The light is on");
+						} else {
+							console.log("The light is not on");
+						}
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3>Enum</h3>
+				<p>
+					An Enum represents a possible set of values that a variable can be assigned.
+				</p>
+				<pre>
+					<code data-trim>
+						enum Direction {
+							North = 'North',
+							East = 'East',
+							South = 'South',
+							West = 'West',
+						}
+						console.log(Direction.North);
+						let dir: Direction = East;
+						console.log(dir);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				Null
+				<p>
+					Null is a type that can only hold the value null. null is a 'subtype' of all other types,
+					so any type variable can be assigned to null.
+				</p>
+				<pre>
+					<code data-trim>
+						let s:String = Null;
+						console.log(s);
+						if (s === Null) {
+							console.log("s is set to null");
+						}
+	
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				When using the --strictNullChecks flag, only Any and Null can be assigned to Null.
+				<pre>
+					<code data-trim>
+						let s:Any = Null;
+						console.log(s);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3>Array</h3>
+				<p>
+					Array variables can be assigned to a list of values. The types of the values in
+					the list must also be assigned to a type.
+				</p>
+				<pre>
+					<code data-trim>
+						let names: string[] = [];
+						names[0] = "Bob";
+						names[1] = "Mary";
+						console.log(names);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3>Array Initialization</h3>
+				<p>
+					Array variables can be assigned to a list of values. The types of the values in
+					the list must also be assigned to a type.
+				</p>
+				<pre>
+					<code data-trim>
+						let names = ["Bob", "Mary"];
+						console.log(names);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3>Arrays with different element types</h3>
+				<p>
+					The typescript type model is flexible in that a variable can be defined to allow for multiple
+					types. For example, if there is an array of strings and numbers, it can be defined like this:
+				</p>
+				<pre>
+					<code data-trim>
+						let names: (string | number)[] = ["Bob", 1, "Mary", 2];
+						console.log(names);
+						names[0] = 1
+						names[1] = "Bob"
+						console.log(names);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3>Arrays and For Loop Iteration</h3>
+				<p>
+					One way to process each record of an array is through a for loop.
+				</p>
+				<pre>
+					<code data-trim>
+						let names = ["Bob", "Maria", "Alice", "Ricardo"];
+						for (let index in names) {
+							console.log(names[index]);
+						}
+						for (let i = 0; i < names.length; i++) {
+							console.log(names[index]);
+						}
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				Any
+				<p>
+					If a variable can be assigned to values of any type, then the any type keyword is applicable.
+					This should only be used when absolutely essential.
+				</p>
+				<pre>
+					<code data-trim>
+						let hybridArray: any[] = [];
+						hybridArray[0] = [1, 2, 3];
+						hybridArray[1] = "blah blah";
+						hybridArray[2] = true;
+						console.log(hybridArray);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3>Tuple</h3>
+				<p>
+					A tuple is essentially a fixed length array. The type rules for tuples are also
+					defined by array position.
+				</p>
+				<pre>
+					<code data-trim>
+						// Declare a tuple type
+						let x: [string, number];
+						// Initialize it
+						x = ["hello", 10]; // OK
+						// Initialize it incorrectly
+						x = [10, "hello"]; // Error
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3>Variables and Scope Part I</h3>
+				<p>
+					The code where a particular variable is accessible can be called its scope. At the highest
+					level, each file in typescript contains one scope.
+				</p>
+				<p>
+					Additional scopes are defined in a file with curly brackets, typically for functions and
+					control flow loops.
+				</p>
+				<pre>
+					<code data-trim>
+						{
+							let x = 5;
+							console.log(x);
+						}
+						{
+							console.log(x);
+						}
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3>Functions</h3>
+				<p>
+					A function is a block of code that can be invoked from another location in the program.
+					A typescript function can optionally have one or more parameters that are assigned to
+					values by the caller.
+					Also, a typescript function can return 1 or more values to the caller.
+				</p>
+				<p>
+					This is a function that does not return a value or take parameters.
+				</p>
+				<pre>
+					<code data-trim>
+						function logsomething() {
+							console.log("something");
+						}
+
+						logsomething();
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				Function Parameters
+				<pre>
+					<code data-trim>
+						function greet(name: String, times: Number) {
+							for (let t = 0; t < times; t++) {
+								console.log(`Hello ${name}`);
+							}
+						}
+						greet("Angelina", 10);
+					</code>
+				</pre>
+			</section>
+
+
+			<section>
+				Function Parameters Default Values
+				<pre>
+					<code data-trim>
+						function greet(name: String, times: Number = 1) {
+							for (t = 0; t < times; t++) {
+								console.log(`Hello ${name}`);
+							}
+						}
+						greet("Angelina");
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				Function Return Values
+				<pre>
+					<code data-trim>
+						function double(value: Number) {
+							return number * 2;
+						}
+
+						let doubled = double(10);
+						console.log(doubled);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3> Typescript Function Shortcuts </h3>
+				<p>
+					A one line function that returns a value has shorthand notation.
+				</p>
+				<pre>
+					<code data-trim>
+						const double = (value: Number): Number => value * 2
+
+						let doubled = double(10);
+						console.log(doubled);
+					</code>
+				</pre>
+			</section>
+
+
+			<section>
+				<h3> Typescript Function Shortcuts for MultiLine </h3>
+				<p>
+					A one line function that returns a value has shorthand notation.
+				</p>
+				<pre>
+					<code data-trim>
+						const double = (value: Number): Number {
+							console.log("calling this function");
+							return value * 2;
+						}
+
+						let doubled = double(10);
+						console.log(doubled);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				Classes
+				<b>
+					Classes were introduced to Javascript in ECMA Script. A class essentially defines
+					behavior and data that can be encapsulated in instances of the class, which
+					are called objects.
+				</b>
+				<pre>
+					<code data-trim>
+						class Meetup {
+							title: string;
+							description: string;
+
+							constructor(title, description) {
+								this.title = title;
+								this.description = description;
+							}
+
+							public toString(): string {
+								return `Class Title: ${title}\nDescription:\n${description}.`;
+							}
+
+						}
+
+						let m = new Meetup("Introduction to Typescript",
+							"A high level overview of Typescript Language Concepts.");
+
+						console.log(m);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				Interfaces
+				<b>
+					Interfaces define the structure of the type without using a class.
+				</b>
+				<pre>
+					<code data-trim>
+						interface Event {
+							title: string;
+							description: string;
+							toString();
+						}
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h2>Implementing an interface</h2>
+				<b>
+					A class can implement an interface.
+				</b>
+				<pre>
+					<code data-trim>
+						class Workshop implements Event {
+							title: string;
+							description: string;
+							instructor: string;
+
+							constructor(title, description, instructor) {
+								this.title = title;
+								this.description = description;
+								this.instructor = instructor;
+							}
+
+							public toString(): string {
+								return `Instructor: #{instructor}\nClass Title: ${title}\nDescription:\n${description}.`;
+							}
+						}
+
+						let e:Event = new Meetup("Introduction to Typescript",
+							"A high level overview of Typescript Language Concepts.");
+						let m:Meetup = new Meetup(("Introduction to Javascript",
+						"A high level overview of Javascript Language Concepts."))
+						console.log(e);
+						console.log(m);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h2>Generics</h2>
+				<p>
+					We have seen types, and variables. Now let's look at a type variable!
+					A type variable is a placeholder for a type. Shown here in this
+					identity function as &lt;T&gt;.
+				</p>
+				<pre>
+					<code data-trim>
+						function identity(value: <T>): <T> {
+							return value;
+						}
+						let v = 22;
+						let y = identity(v);
+						console.log(y);
+						let m: String; 
+						m = identity(v);
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h2>Modules</h2>
+				<p>
+					Each file in typescript represents 1 module. A module is a scoped namespace.
+					In order for one module to access another module, symbols must be explicitly
+					imported.
+				</p>
+				<code data-trim>
+					import greet from './Greet';
+
+					greet.sayHi('Brad');
+				</code>
+			</section>
+
+			<section>
+				<h2>Default and Other exports</h2>
+				<p>
+					Each module can export multiple objects, but only one default.
+				</p>
+				<code data-trim>
+					export function f1() {
+						// do something
+					}
+
+					export default function f2() {
+						// do something else
+					}
+				</code>
+			</section>
+
+			<section>
+				<h2>Default and Other exports</h2>
+				<p>
+					The default import can be on the same line as the non-default imports.
+				</p>
+				<code data-trim>
+				 	import f2, { f1 } from module;
+				</code>
+			</section>
+
+			<section>
+				<h2>Where from here?</h2>
+				<p>
+					Continue learning the fundamentals in tools like
+					<pre> repl.it </pre>
+				</p>
+				<p>
+					Thanks!
+				</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			hash: true,
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/highlight/highlight.js' },
+				{ src: 'plugin/notes/notes.js', async: true }
+			]
+		});
+	</script>
+</body>
+
+</html>
